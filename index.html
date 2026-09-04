@@ -13,14 +13,6 @@
             text-align:center;
             padding:30px 20px;
         }
-        .butang-muzik{
-            position:fixed;top:15px;right:15px;z-index:10;
-            padding:10px 18px;border-radius:50px;border:none;
-            background:white;box-shadow:0 3px 10px rgba(0,0,0,0.1);
-            cursor:pointer;font-size:15px;font-weight:bold;
-        }
-        .butang-muzik.aktif{background:#e74c3c;color:white}
-
         .kotak{
             background:white;
             border-radius:25px;
@@ -31,7 +23,6 @@
         }
         .emoji{font-size:50px;margin-bottom:20px}
         h1{font-size:22px;color:#b03a2e;margin-bottom:15px}
-        h2{font-size:20px;color:#6c3483;margin-bottom:15px}
         p{font-size:16px;color:#444;line-height:1.8;margin-bottom:10px}
         .hati{font-size:30px;margin:15px 0;color:red}
         .butang{
@@ -49,14 +40,6 @@
     </style>
 </head>
 <body>
-
-    <!-- 🎵 LAGU: jaz.mp3 — DAH BETUL TUTUP! -->
-    <button class="butang-muzik aktif" id="muzikBtn" onclick="mainHentiMuzik()">⏸ Sedang Main</button>
-    <audio id="lagu" loop autoplay preload="auto">
-        <source src="jaz.mp3" type="audio/mpeg">
-        Pelayar anda tidak menyokong audio.
-     <!-- ⚠️ INI YANG KURANG TADI — DAH TUTUP! -->
-
     <div class="kotak">
         <!-- HALAMAN 1 -->
         <div class="halaman aktif" id="h1">
@@ -96,7 +79,7 @@
             <p style="font-style:italic;color:#777;margin-top:20px;">— Yang ikhlas, dari hati saya untuk Via ❤️</p>
         </div>
 
-        <!-- BUTANG NAVIGASI -->
+        <!-- BUTANG -->
         <div style="margin-top:25px;">
             <button class="butang" onclick="tukar(-1)">← Sebelum</button>
             <button class="butang" onclick="tukar(1)">Seterusnya →</button>
@@ -106,9 +89,6 @@
 <script>
     let sekarang = 1;
     const jumlah = 4;
-    const lagu = document.getElementById('lagu');
-    const muzikBtn = document.getElementById('muzikBtn');
-    let sedangMain = true;
 
     function kemasKini(){
         for(let i=1;i<=jumlah;i++){
@@ -123,20 +103,6 @@
         if(sekarang > jumlah) sekarang = 1;
         kemasKini();
     }
-
-    function mainHentiMuzik(){
-        if(sedangMain){
-            lagu.pause();
-            muzikBtn.innerText = '🎵 Main Lagu';
-            muzikBtn.classList.remove('aktif');
-        } else {
-            lagu.play().catch(()=>alert('Tekan sekali lagi untuk main lagu 🎶'));
-            muzikBtn.innerText = '⏸ Henti';
-            muzikBtn.classList.add('aktif');
-        }
-        sedangMain = !sedangMain;
-    }
 </script>
 </body>
-            </html>
-            
+</html>
