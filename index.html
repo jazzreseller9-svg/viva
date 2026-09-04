@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk My Kesayangann ❤️ — Minta Maaf</title>
+    <title>Untuk My Kesayangannnn❤️ — Sorryyy</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{
@@ -13,16 +13,6 @@
             text-align:center;
             padding:30px 20px;
         }
-        /* Butang Muzik */
-        .butang-muzik{
-            position:fixed;top:15px;right:15px;z-index:10;
-            padding:10px 18px;border-radius:50px;border:none;
-            background:white;box-shadow:0 3px 10px rgba(0,0,0,0.1);
-            cursor:pointer;font-size:15px;font-weight:bold;
-            transition:all 0.3s ease;
-        }
-        .butang-muzik.aktif{background:#e74c3c;color:white}
-
         .kotak{
             background:white;
             border-radius:25px;
@@ -33,7 +23,6 @@
         }
         .emoji{font-size:50px;margin-bottom:20px}
         h1{font-size:22px;color:#b03a2e;margin-bottom:15px}
-        h2{font-size:20px;color:#6c3483;margin-bottom:15px}
         p{font-size:16px;color:#444;line-height:1.8;margin-bottom:10px}
         .hati{font-size:30px;margin:15px 0;color:red}
         .butang{
@@ -45,62 +34,52 @@
             font-size:16px;
             margin-top:20px;
             cursor:pointer;
-            transition:transform 0.2s ease;
         }
-        .butang:active{transform:scale(0.95)}
         .halaman{display:none}
         .halaman.aktif{display:block}
     </style>
 </head>
 <body>
-
-    <!-- BUTANG & LAGU -->
-    <button class="butang-muzik" id="muzikBtn" onclick="mainHentiMuzik()">🎵 Main Lagu</button>
-    <audio id="lagu" loop preload="auto">
-        <source src="kota-ini-tak-sama-tanpamu.mp3" type="audio/mpeg">
-        
-    
-
     <div class="kotak">
         <!-- HALAMAN 1 -->
         <div class="halaman aktif" id="h1">
             <div class="emoji">🙏</div>
             <h1>Hai Via... ❤️</h1>
-            <p>Saya ingin berkata kata HAHAHA.</p>
-            <p>OKEY MULA</p>...</p>
+            <p>Anuuu Apayaa ermm</p>
+            <p>Okeyyy izinkann sayaa berkataa kataa hehe...</p>
             <div class="hati">❤️</div>
         </div>
 
         <!-- HALAMAN 2 -->
         <div class="halaman" id="h2">
             <div class="emoji">💔</div>
-            <h2>Saya Minta Maaf 🙏</h2>
-            <p>Sorry yaa via sebab buat dia marah — sama ada sengaja atau tidak sengaja.</p>
-            <p>sedar juga sebab banyak mesej nya dia padam.</p>
+            <h2>Sorryyy vivanaline 🙏</h2>
+            <p>Sorryy Sebab Buat Dia Marah ka sama ada sengaja atau tidak sengaja.</p>
+            <p>Sedar jugaa sebab banyak kann dia pi padam jadi mungkin marahh laa tuu saye rasa.</p>
             <div class="hati">🥺❤️</div>
         </div>
 
         <!-- HALAMAN 3 -->
         <div class="halaman" id="h3">
             <div class="emoji">🤞</div>
-            <h2>Sorry  ❤️</h2>
-            <p>Saya janji akan berusaha menjadi lebih baik for you.</p>
-            <p>Jan marah ii yaaa.</p>
-            <p>Semoga diaa nda marahh ii sudaa.</p>
+            <h2>Sorry Ya Viaa ❤️</h2>
+            <p>Saya janji lepasni akan lebih membuatnya balik balik marah .</p>
+            <p>Jadi kalau marah nantii tinggal minta maaf lagii kann hehe.</p>
+            <p>apayaa lagii.</p>
             <div class="hati">💕</div>
         </div>
 
         <!-- HALAMAN 4 -->
         <div class="halaman" id="h4">
             <div class="emoji">🥰</div>
-            <h2>Terima Kasih ❤️</h2>
-            <p>TQ sebab baca viaa.</p>
-            <p>Sayanggg diaaa. Okeyy tedaa marahh ii sudaa yaa loveeuuu viaa.</p>
+            <h2>Tq ❤️</h2>
+            <p>Tq sebab baca sampaii habis walaupun ntah apa jaa di cakap ni.</p>
+            <p>Sayanggggg c viaaa. Jann marahh ii yaaa.</p>
             <div class="hati">❤️❤️❤️</div>
-            <p style="font-style:italic;color:#777;margin-top:20px;">— Yang ikhlas, dari hati saya untuk Via ❤️<br><small>"Kota ini tak sama tanpamu" 🎶</small></p>
+            <p style="font-style:italic;color:#777;margin-top:20px;">— Yang ikhlas, dari hati saya untuk Via ❤️</p>
         </div>
 
-        <!-- BUTANG NAVIGASI -->
+        <!-- BUTANG -->
         <div style="margin-top:25px;">
             <button class="butang" onclick="tukar(-1)">← Sebelum</button>
             <button class="butang" onclick="tukar(1)">Seterusnya →</button>
@@ -110,9 +89,6 @@
 <script>
     let sekarang = 1;
     const jumlah = 4;
-    const lagu = document.getElementById('lagu');
-    const muzikBtn = document.getElementById('muzikBtn');
-    let sedangMain = false;
 
     function kemasKini(){
         for(let i=1;i<=jumlah;i++){
@@ -126,22 +102,6 @@
         if(sekarang < 1) sekarang = jumlah;
         if(sekarang > jumlah) sekarang = 1;
         kemasKini();
-    }
-
-    // FUNGSI MAIN/HENTI LAGU
-    function mainHentiMuzik(){
-        if(sedangMain){
-            lagu.pause();
-            muzikBtn.innerText = '🎵 Main Lagu';
-            muzikBtn.classList.remove('aktif');
-        } else {
-            lagu.play().catch(()=>{
-                alert('Sila tekan sekali lagi untuk main lagu 🎶');
-            });
-            muzikBtn.innerText = '⏸ Henti';
-            muzikBtn.classList.add('aktif');
-        }
-        sedangMain = !sedangMain;
     }
 </script>
 </body>
