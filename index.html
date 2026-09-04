@@ -13,6 +13,16 @@
             text-align:center;
             padding:30px 20px;
         }
+        /* BUTANG LAGU (kekal untuk henti/lanjut kalau nak) */
+        .butang-muzik{
+            position:fixed;top:15px;right:15px;z-index:10;
+            padding:10px 18px;border-radius:50px;border:none;
+            background:white;box-shadow:0 3px 10px rgba(0,0,0,0.1);
+            cursor:pointer;font-size:15px;font-weight:bold;
+            transition:all 0.3s ease;
+        }
+        .butang-muzik.aktif{background:#e74c3c;color:white}
+
         .kotak{
             background:white;
             border-radius:25px;
@@ -34,12 +44,22 @@
             font-size:16px;
             margin-top:20px;
             cursor:pointer;
+            transition:transform 0.2s ease;
         }
+        .butang:active{transform:scale(0.95)}
         .halaman{display:none}
         .halaman.aktif{display:block}
     </style>
 </head>
 <body>
+
+    <!-- 🎵 LAGU AUTO MAIN - TAK PAYAH TEKAN! -->
+    <button class="butang-muzik aktif" id="muzikBtn" onclick="mainHentiMuzik()">⏸ Sedang Main</button>
+    <audio id="lagu" loop autoplay preload="auto">
+        <source src="risk it all.mp3" type="audio/mpeg">
+        Pelayar anda tidak menyokong audio.
+    
+
     <div class="kotak">
         <!-- HALAMAN 1 -->
         <div class="halaman aktif" id="h1">
@@ -79,7 +99,7 @@
             <p style="font-style:italic;color:#777;margin-top:20px;">— Yang ikhlas, dari hati saya untuk Via ❤️</p>
         </div>
 
-        <!-- BUTANG -->
+        <!-- BUTANG NAVIGASI -->
         <div style="margin-top:25px;">
             <button class="butang" onclick="tukar(-1)">← Sebelum</button>
             <button class="butang" onclick="tukar(1)">Seterusnya →</button>
@@ -89,6 +109,9 @@
 <script>
     let sekarang = 1;
     const jumlah = 4;
+    const lagu = document.getElementById('lagu');
+    const muzikBtn = document.getElementById('muzikBtn');
+    let sedangMain = true; // Auto main bila buka!
 
     function kemasKini(){
         for(let i=1;i<=jumlah;i++){
@@ -103,6 +126,26 @@
         if(sekarang > jumlah) sekarang = 1;
         kemasKini();
     }
+
+    // 🎵 FUNGSI MAIN/HENTI — kekal untuk henti kalau nak
+    function mainHentiMuzik(){
+        if(sedangMain){
+            lagu.pause();
+            muzikBtn.innerText = '🎵 Main Lagu';
+            muzikBtn.classList.remove('aktif');
+        } else {
+            lagu.play().catch(()=>alert('Tekan sekali lagi untuk main lagu 🎶'));
+            muzikBtn.innerText = '⏸ Henti';
+            muzikBtn.classList.add('aktif');
+        }
+        sedangMain = !sedangMain;
+    }
+
+    // 🔄 AUTO MAIN — paksa main bila halaman dibuka
+    window.addEventListener('click', function autoPlayOnce(){
+        lagu.play().catch(e => console.log('Auto-play diblokir, tekan sekali untuk main'));
+        window.removeEventListener('click', autoPlayOnce);
+    });
 </script>
 </body>
 </html>
