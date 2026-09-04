@@ -9,78 +9,65 @@
         body{
             min-height:100vh;
             display:flex;justify-content:center;align-items:center;
-            background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 50%,#ff9a9e 100%);
-            font-family:'Segoe UI','Noto Sans',sans-serif;
+            background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%);
+            font-family:'Segoe UI',sans-serif;
             text-align:center;
             padding:30px 20px;
-            overflow:hidden;
             transition:all 0.8s ease;
         }
-
-        /* Latar belakang berubah setiap halaman */
         .page1{background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%)}
         .page2{background:linear-gradient(135deg,#e0c3fc 0%,#8ec5fc 100%)}
         .page3{background:linear-gradient(135deg,#d4fc79 0%,#96e6a1 100%)}
         .page4{background:linear-gradient(135deg,#fa709a 0%,#fee140 100%)}
 
         .container{
-            background:rgba(255,255,255,0.85);
+            background:rgba(255,255,255,0.9);
             border-radius:28px;
-            padding:50px 35px;
+            padding:40px 25px;
             max-width:420px;
             box-shadow:0 15px 50px rgba(0,0,0,0.15);
-            animation:muncul 1.5s ease-out forwards;
-            opacity:0;transform:translateY(30px);
-            position:relative;z-index:2;
+            width:100%;
         }
 
-        @keyframes muncul{to{opacity:1;transform:translateY(0)}}
-        .emoji{font-size:70px;margin-bottom:25px;animation:denyutan 2s ease-in-out infinite}
-        @keyframes denyutan{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-        h1{font-size:2em;color:#b03a2e;margin-bottom:20px;font-weight:700;line-height:1.3}
-        h2{font-size:1.6em;color:#6c3483;margin-bottom:18px}
-        p{font-size:1.15em;color:#444;line-height:2;margin-bottom:15px}
-        .hati{color:#e74c3c;font-size:2em;margin:20px 0;animation:degup 1s ease-in-out infinite alternate}
-        @keyframes degup{from{transform:scale(0.9)}to{transform:scale(1.2)}}
-        .tanda{margin-top:30px;font-style:italic;color:#777;font-size:1em}
-        .navigasi{margin-top:35px;display:flex;gap:15px;justify-content:center}
+        .emoji{font-size:60px;margin-bottom:20px}
+        h1{font-size:1.8em;color:#b03a2e;margin-bottom:15px}
+        h2{font-size:1.5em;color:#6c3483;margin-bottom:15px}
+        p{font-size:1.1em;color:#444;line-height:1.8;margin-bottom:12px}
+        .hati{font-size:2em;margin:15px 0;color:#e74c3c}
+        .tanda{margin-top:20px;font-style:italic;color:#777}
+
+        .navigasi{margin-top:25px;display:flex;gap:12px;justify-content:center}
         .btn{
-            padding:12px 25px;border-radius:50px;border:none;
+            padding:12px 22px;border-radius:50px;border:none;
             background:linear-gradient(135deg,#f1948a,#e74c3c);
             color:white;font-size:1em;font-weight:600;cursor:pointer;
-            box-shadow:0 5px 20px rgba(231,76,60,0.3);
-            transition:transform 0.3s ease
         }
-        .btn:hover{transform:scale(1.05)}
         .btn-sec{background:linear-gradient(135deg,#aed6f1,#5dade2)}
+
         .musik{
-            position:fixed;top:20px;right:20px;z-index:10;
-            padding:10px 18px;border-radius:50px;border:none;
-            background:white;box-shadow:0 5px 20px rgba(0,0,0,0.1);
-            cursor:pointer;font-size:0.9em;display:flex;align-items:center;gap:8px
+            position:fixed;top:15px;right:15px;z-index:10;
+            padding:10px 15px;border-radius:50px;border:none;
+            background:white;box-shadow:0 3px 10px rgba(0,0,0,0.1);
+            cursor:pointer;font-size:0.9em
         }
+
         .halaman{display:none}
-        .halaman.aktif{display:block;animation:muncul 1s ease-out forwards}
-        .titik{display:flex;justify-content:center;gap:10px;margin-top:25px}
-        .dot{width:12px;height:12px;border-radius:50%;background:#ddd;transition:all 0.3s ease}
-        .dot.aktif{background:#e74c3c;transform:scale(1.3)}
+        .halaman.aktif{display:block}
+
+        .titik{display:flex;justify-content:center;gap:10px;margin-top:20px}
+        .dot{width:12px;height:12px;border-radius:50%;background:#ddd}
+        .dot.aktif{background:#e74c3c}
     </style>
 </head>
 <body class="page1">
 
-    <!-- Butang Muzik -->
-    <button class="musik" id="butangMuzik" onclick="mainHentiMuzik()">
-        🎵 <span id="statusMuzik">Main</span>
-    </button>
-
-    <!-- Audio — Lagu sesuai: "Maafkanlah" / "Ku Tak Sempurna" -->
+    <button class="musik" id="butangMuzik" onclick="mainHentiMuzik()">🎵 Main</button>
     <audio id="lagu" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
     
 
     <div class="container">
 
-        <!-- HALAMAN 1: PEMBUKAAN -->
         <div class="halaman aktif" id="h1">
             <div class="emoji">🙏</div>
             <h1>Hai Via... ❤️</h1>
@@ -89,8 +76,7 @@
             <div class="hati">❤️</div>
         </div>
 
-        <!-- HALAMAN 2: MINTA MAAF -->
-        <div class="halaman page2" id="h2">
+        <div class="halaman" id="h2">
             <div class="emoji">💔</div>
             <h2>Saya Minta Maaf 🙏</h2>
             <p>Dari lubuk hati yang paling dalam,<br>saya memohon maaf atas segala kesalahan —<br>sama ada sengaja atau tidak sengaja.</p>
@@ -98,18 +84,16 @@
             <div class="hati">🥺❤️</div>
         </div>
 
-        <!-- HALAMAN 3: JANJI & HARAPAN -->
-        <div class="halaman page3" id="h3">
+        <div class="halaman" id="h3">
             <div class="emoji">🤞</div>
             <h2>Saya Janji ❤️</h2>
             <p>Saya janji akan berusaha menjadi lebih baik untuk awak.</p>
             <p>Awak sangat berharga bagi saya,<br>dan saya tak mahu kehilangan awak.</p>
-            <p>Semoga awak sudi memberi saya peluang untuk tebus kesalahan saya.</p>
+            <p>Semoga awak sudi memberi saya peluang.</p>
             <div class="hati">💕</div>
         </div>
 
-        <!-- HALAMAN 4: PENUTUP -->
-        <div class="halaman page4" id="h4">
+        <div class="halaman" id="h4">
             <div class="emoji">🥰</div>
             <h2>Terima Kasih ❤️</h2>
             <p>Terima kasih kerana sudi membaca ini sehingga habis.</p>
@@ -118,15 +102,13 @@
             <p class="tanda">— Yang ikhlas, dari hati saya untuk Via ❤️</p>
         </div>
 
-        <!-- Titik Penunjuk Halaman -->
         <div class="titik">
-            <span class="dot aktif" data-h="1"></span>
-            <span class="dot" data-h="2"></span>
-            <span class="dot" data-h="3"></span>
-            <span class="dot" data-h="4"></span>
+            <span class="dot aktif" onclick="keHalaman(1)"></span>
+            <span class="dot" onclick="keHalaman(2)"></span>
+            <span class="dot" onclick="keHalaman(3)"></span>
+            <span class="dot" onclick="keHalaman(4)"></span>
         </div>
 
-        <!-- Butang Navigasi -->
         <div class="navigasi">
             <button class="btn btn-sec" onclick="tukarHalaman(-1)">← Sebelum</button>
             <button class="btn" onclick="tukarHalaman(1)">Seterusnya →</button>
@@ -137,19 +119,15 @@
     let halamanSemasa = 1;
     const jumlahHalaman = 4;
     const lagu = document.getElementById('lagu');
-    const statusMuzik = document.getElementById('statusMuzik');
-    const butangMuzik = document.getElementById('butangMuzik');
     let sedangMain = false;
-    let autoTukar;
 
-    // Tukar Halaman
     function kemasKiniHalaman(){
-        document.querySelectorAll('.halaman').forEach(h=>h.classList.remove('aktif'));
+        for(let i=1;i<=jumlahHalaman;i++){
+            document.getElementById(`h${i}`).classList.remove('aktif');
+            document.querySelectorAll('.dot')[i-1].classList.remove('aktif');
+        }
         document.getElementById(`h${halamanSemasa}`).classList.add('aktif');
-        document.querySelectorAll('.dot').forEach((d,i)=>{
-            d.classList.toggle('aktif', i+1 === halamanSemasa);
-        });
-        // Tukar latar belakang
+        document.querySelectorAll('.dot')[halamanSemasa-1].classList.add('aktif');
         document.body.className = `page${halamanSemasa}`;
     }
 
@@ -158,49 +136,29 @@
         if(halamanSemasa < 1) halamanSemasa = jumlahHalaman;
         if(halamanSemasa > jumlahHalaman) halamanSemasa = 1;
         kemasKiniHalaman();
-        resetAutoTukar();
     }
 
-    // Auto tukar halaman setiap 8 saat
-    function mulaAutoTukar(){
-        autoTukar = setInterval(()=>{
-            halamanSemasa++;
-            if(halamanSemasa > jumlahHalaman) halamanSemasa = 1;
-            kemasKiniHalaman();
-        }, 8000);
+    function keHalaman(nombor){
+        halamanSemasa = nombor;
+        kemasKiniHalaman();
     }
 
-    function resetAutoTukar(){
-        clearInterval(autoTukar);
-        mulaAutoTukar();
-    }
-
-    // Muzik
     function mainHentiMuzik(){
         if(sedangMain){
             lagu.pause();
-            statusMuzik.textContent = 'Main';
-            butangMuzik.style.background = 'white';
+            document.getElementById('butangMuzik').innerText = '🎵 Main';
         } else {
-            lagu.play().catch(e=>console.log('Klik untuk main lagu'));
-            statusMuzik.textContent = 'Henti';
-            butangMuzik.style.background = '#e74c3c';
-            butangMuzik.style.color = 'white';
+            lagu.play().catch(err=>alert('Tekan sekali lagi untuk main lagu'));
+            document.getElementById('butangMuzik').innerText = '⏸ Henti';
         }
         sedangMain = !sedangMain;
     }
 
-    // Klik titik untuk terus ke halaman
-    document.querySelectorAll('.dot').forEach(dot=>{
-        dot.addEventListener('click', ()=>{
-            halamanSemasa = parseInt(dot.dataset.h);
-            kemasKiniHalaman();
-            resetAutoTukar();
-        });
-    });
-
-    // Mula automatik
-    mulaAutoTukar();
+    setInterval(()=>{
+        halamanSemasa++;
+        if(halamanSemasa > jumlahHalaman) halamanSemasa = 1;
+        kemasKiniHalaman();
+    }, 10000);
 </script>
 
 </body>
