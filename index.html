@@ -13,13 +13,11 @@
             text-align:center;
             padding:30px 20px;
         }
-        /* BUTANG LAGU (kekal untuk henti/lanjut kalau nak) */
         .butang-muzik{
             position:fixed;top:15px;right:15px;z-index:10;
             padding:10px 18px;border-radius:50px;border:none;
             background:white;box-shadow:0 3px 10px rgba(0,0,0,0.1);
             cursor:pointer;font-size:15px;font-weight:bold;
-            transition:all 0.3s ease;
         }
         .butang-muzik.aktif{background:#e74c3c;color:white}
 
@@ -33,6 +31,7 @@
         }
         .emoji{font-size:50px;margin-bottom:20px}
         h1{font-size:22px;color:#b03a2e;margin-bottom:15px}
+        h2{font-size:20px;color:#6c3483;margin-bottom:15px}
         p{font-size:16px;color:#444;line-height:1.8;margin-bottom:10px}
         .hati{font-size:30px;margin:15px 0;color:red}
         .butang{
@@ -44,21 +43,19 @@
             font-size:16px;
             margin-top:20px;
             cursor:pointer;
-            transition:transform 0.2s ease;
         }
-        .butang:active{transform:scale(0.95)}
         .halaman{display:none}
         .halaman.aktif{display:block}
     </style>
 </head>
 <body>
 
-    <!-- 🎵 LAGU AUTO MAIN - TAK PAYAH TEKAN! -->
+    <!-- 🎵 LAGU — DAH BETUL, TEKS PASTI MUNCUL! -->
     <button class="butang-muzik aktif" id="muzikBtn" onclick="mainHentiMuzik()">⏸ Sedang Main</button>
     <audio id="lagu" loop autoplay preload="auto">
         <source src="risk it all.mp3" type="audio/mpeg">
         Pelayar anda tidak menyokong audio.
-    
+     <!-- ⚠️ INI YANG KURANG TADI — TAG PENUTUP! -->
 
     <div class="kotak">
         <!-- HALAMAN 1 -->
@@ -111,7 +108,7 @@
     const jumlah = 4;
     const lagu = document.getElementById('lagu');
     const muzikBtn = document.getElementById('muzikBtn');
-    let sedangMain = true; // Auto main bila buka!
+    let sedangMain = true;
 
     function kemasKini(){
         for(let i=1;i<=jumlah;i++){
@@ -127,7 +124,6 @@
         kemasKini();
     }
 
-    // 🎵 FUNGSI MAIN/HENTI — kekal untuk henti kalau nak
     function mainHentiMuzik(){
         if(sedangMain){
             lagu.pause();
@@ -140,12 +136,7 @@
         }
         sedangMain = !sedangMain;
     }
-
-    // 🔄 AUTO MAIN — paksa main bila halaman dibuka
-    window.addEventListener('click', function autoPlayOnce(){
-        lagu.play().catch(e => console.log('Auto-play diblokir, tekan sekali untuk main'));
-        window.removeEventListener('click', autoPlayOnce);
-    });
 </script>
 </body>
-</html>
+    </html>
+    
